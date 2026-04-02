@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marketing Campaign Page - Learning animations and interactive elements">
+    <title>Marketing Campaign Page | NeerajBuilds</title>
+    
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066FF',
+                        'primary-light': '#3385FF',
+                        accent: '#00D4FF',
+                        purple: '#8B5CF6',
+                        pink: '#EC4899',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --charcoal: #0D0D0D;
+            --dark: #141414;
+            --surface: #1A1A1A;
+            --primary: #0066FF;
+            --accent: #00D4FF;
+            --purple: #8B5CF6;
+            --pink: #EC4899;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--charcoal);
+            color: white;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0D0D0D 0%, #1a1025 50%, #0D0D0D 100%);
+        }
+        
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-link:hover {
+            background: var(--purple);
+            border-color: var(--purple);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.35);
+        }
+        
+        .counter-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .pricing-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.02);
+            border-color: var(--purple);
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            border-color: var(--purple);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Back Link -->
+    <a href="index.html#portfolio" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen pt-24 pb-20 relative overflow-hidden">
+        <div class="floating-shape w-48 h-48 bg-purple/30 -top-10 -left-10"></div>
+        <div class="floating-shape w-56 h-56 bg-pink/20 top-1/2 -right-10" style="animation-delay: -2s;"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center">
+                <div class="inline-flex items-center gap-2 bg-surface/50 border border-white/8 rounded-full px-3 py-1.5 mb-5">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-sm text-gray-400">Personal Project</span>
+                </div>
+                
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+                    Interactive<br>
+                    <span class="gradient-text">Marketing Page</span>
+                </h1>
+                
+                <p class="text-gray-400 text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+                    This project was all about learning animations and interactive elements. I wanted to see how smooth transitions and dynamic content can make a website feel more alive and engaging.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    <a href="#features" class="btn-primary text-sm">
+                        <i class="fas fa-star"></i> Features
+                    </a>
+                    <a href="#pricing" class="px-5 py-2.5 border border-white/15 rounded-lg text-white text-sm hover:bg-white/5 transition-colors">
+                        <i class="fas fa-tag mr-2"></i> Pricing
+                    </a>
+                </div>
+                
+                <!-- Hero Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto">
+                    <div class="counter-box">
+                        <p class="text-2xl font-bold gradient-text">99+</p>
+                        <p class="text-gray-500 text-xs mt-1">Performance</p>
+                    </div>
+                    <div class="counter-box">
+                        <p class="text-2xl font-bold gradient-text">30+</p>
+                        <p class="text-gray-500 text-xs mt-1">Animations</p>
+                    </div>
+                    <div class="counter-box">
+                        <p class="text-2xl font-bold gradient-text">100%</p>
+                        <p class="text-gray-500 text-xs mt-1">Responsive</p>
+                    </div>
+                    <div class="counter-box">
+                        <p class="text-2xl font-bold gradient-text">0</p>
+                        <p class="text-gray-500 text-xs mt-1">Libraries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why I Built This -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-2xl">
+                <h2 class="text-2xl font-bold mb-4">Why This Project?</h2>
+                <p class="text-gray-400 leading-relaxed">
+                    Most landing pages feel static and boring. I wanted to learn how to add life to websites through animations. This project taught me CSS transitions, keyframe animations, scroll-triggered effects, and how to create smooth user experiences without heavy JavaScript libraries.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-16 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p class="text-purple font-medium mb-2 text-sm">What I Built</p>
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">Cool <span class="gradient-text">Features</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Countdown Timer</h3>
+                    <p class="text-gray-400 text-sm">Built a countdown timer that creates urgency - useful for launches and promotions.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Lead Capture</h3>
+                    <p class="text-gray-400 text-sm">Created email signup forms and learned about form validation.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Scroll Effects</h3>
+                    <p class="text-gray-400 text-sm">Learned how to trigger animations when elements come into view.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Touch Friendly</h3>
+                    <p class="text-gray-400 text-sm">All animations work smoothly on mobile devices with touch interactions.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Fast Loading</h3>
+                    <p class="text-gray-400 text-sm">All animations are CSS-based - no heavy libraries slowing down the page.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Smooth Transitions</h3>
+                    <p class="text-gray-400 text-sm">Learned the magic of CSS transitions and how they improve UX.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold mb-2">Demo: <span class="gradient-text">Countdown Timer</span></h2>
+                <p class="text-gray-400 text-sm">A countdown I built - useful for product launches</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-3 md:gap-6 mb-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-surface border border-purple/30 rounded-xl flex items-center justify-center">
+                        <span class="text-2xl md:text-3xl font-bold gradient-text" id="days">02</span>
+                    </div>
+                    <p class="text-gray-500 text-xs mt-2">Days</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-surface border border-purple/30 rounded-xl flex items-center justify-center">
+                        <span class="text-2xl md:text-3xl font-bold gradient-text" id="hours">14</span>
+                    </div>
+                    <p class="text-gray-500 text-xs mt-2">Hours</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-surface border border-purple/30 rounded-xl flex items-center justify-center">
+                        <span class="text-2xl md:text-3xl font-bold gradient-text" id="minutes">35</span>
+                    </div>
+                    <p class="text-gray-500 text-xs mt-2">Minutes</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-surface border border-purple/30 rounded-xl flex items-center justify-center">
+                        <span class="text-2xl md:text-3xl font-bold gradient-text" id="seconds">42</span>
+                    </div>
+                    <p class="text-gray-500 text-xs mt-2">Seconds</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#contact" class="btn-primary">
+                    <i class="fas fa-gift"></i> Let's Create One for You
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-16 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <p class="text-purple font-medium mb-2 text-sm">What I Learned</p>
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">Building <span class="gradient-text">Pricing Tables</span></h2>
+                <p class="text-gray-400 text-sm">I built this pricing section to practice layout design and responsive grids</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <div class="pricing-card">
+                    <h3 class="text-lg font-semibold mb-1">Starter</h3>
+                    <p class="text-gray-400 text-xs mb-3">Good for beginners</p>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold">$49</span>
+                        <span class="text-gray-400 text-sm">/mo</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-400 mb-4">
+                        <li><i class="fas fa-check text-purple mr-2"></i>Landing Page</li>
+                        <li><i class="fas fa-check text-purple mr-2"></i>Basic Animations</li>
+                        <li><i class="fas fa-check text-purple mr-2"></i>Email Capture</li>
+                    </ul>
+                    <button class="w-full py-2 border border-purple/40 rounded-lg text-purple text-sm hover:bg-purple hover:text-white transition-colors">
+                        Choose
+                    </button>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="absolute -top-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple to-pink px-3 py-0.5 rounded-full text-xs font-medium">
+                        Popular
+                    </div>
+                    <h3 class="text-lg font-semibold mb-1">Pro</h3>
+                    <p class="text-gray-400 text-xs mb-3">For growing projects</p>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold">$99</span>
+                        <span class="text-gray-400 text-sm">/mo</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-400 mb-4">
+                        <li><i class="fas fa-check text-purple mr-2"></i>Full Page</li>
+                        <li><i class="fas fa-check text-purple mr-2"></i>Advanced Animations</li>
+                        <li><i class="fas fa-check text-purple mr-2"></i>A/B Testing</li>
+                        <li><i class="fas fa-check text-purple mr-2"></i>Analytics</li>
+                    </ul>
+                    <button class="w-full py-2 bg-gradient-to-r from-purple to-pink rounded-lg text-white text-sm">
+                        Choose
+                    </button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3 class="text-lg font-semibold mb-1">Enterprise</h3>
+                    <p class="text-gray-400 text-xs mb-3">For big projects</p>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold">$199</span>
+                        <span class="text-gray-400 text-sm">/mo</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-400 mb-4">
+                        <li><i class="fas fa-check text-purple mr-2"></i>Everything in Pro</li>
+                        <li><i class="fas fa-check text-purple mr-2"></i>Custom Dev</li>
+                        <li><i class="fas fa-check text-purple mr-2"></i>Priority Support</li>
+                    </ul>
+                    <button class="w-full py-2 border border-purple/40 rounded-lg text-purple text-sm hover:bg-purple hover:text-white transition-colors">
+                        Contact
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-2xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">Want animated elements on your site?</h2>
+            <p class="text-gray-400 mb-6">
+                I can add smooth animations and interactive features to make your website stand out. Let's discuss your project.
+            </p>
+            <a href="index.html#contact" class="btn-primary">
+                <i class="fas fa-rocket"></i> Start a Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-charcoal border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2026 NeerajBuilds. 
+                <a href="index.html" class="text-purple hover:underline">Back to Home</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const countDownDate = new Date();
+        countDownDate.setDate(countDownDate.getDate() + 2);
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Commerce Store Project - Building my first online store to learn JavaScript">
+    <title>E-Commerce Store | NeerajBuilds</title>
+    
+    <link rel="icon" type="image/jpeg" href="../logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+   preconnect" href <link rel="="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066FF',
+                        'primary-light': '#3385FF',
+                        accent: '#00D4FF',
+                        emerald: '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --charcoal: #0D0D0D;
+            --dark: #141414;
+            --surface: #1A1A1A;
+            --primary: #0066FF;
+            --emerald: #10B981;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--charcoal);
+            color: white;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #10B981, #00D4FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0D0D0D 0%, #0f1f1a 50%, #0D0D0D 100%);
+        }
+        
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-link:hover {
+            background: var(--emerald);
+            border-color: var(--emerald);
+        }
+        
+        .product-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--emerald);
+        }
+        
+        .product-image {
+            height: 160px;
+            background: linear-gradient(135deg, #10B981/15, #00D4FF/10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .price-tag {
+            color: var(--emerald);
+            font-weight: 700;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--emerald), #34d399);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--emerald), #00D4FF);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Back Link -->
+    <a href="../index.html#portfolio" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen pt-24 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-10 -right-10 w-60 h-60 bg-emerald/15 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 -left-10 w-60 h-60 bg-accent/15 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-surface/50 border border-white/8 rounded-full px-3 py-1.5 mb-5">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-sm text-gray-400">Personal Project</span>
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+                        My First<br>
+                        <span class="gradient-text">E-Commerce Store</span>
+                    </h1>
+                    
+                    <p class="text-gray-400 text-base md:text-lg mb-6 max-w-lg leading-relaxed">
+                        After mastering basic HTML/CSS, I wanted to build something more interactive. This project taught me how to build dynamic features like shopping carts, product filtering, and user interactions - all with vanilla JavaScript.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="#features" class="btn-primary text-sm">
+                            <i class="fas fa-star"></i> What I Built
+                        </a>
+                        <a href="#products" class="px-5 py-2.5 border border-white/15 rounded-lg text-white text-sm hover:bg-white/5 transition-colors">
+                            <i class="fas fa-shopping-bag mr-2"></i> Products
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 pt-5 border-t border-white/10">
+                        <div class="flex items-center gap-2 text-gray-400 text-sm">
+                            <i class="fas fa-check text-emerald text-xs"></i>
+                            <span>Shopping Cart</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-400 text-sm">
+                            <i class="fas fa-check text-emerald text-xs"></i>
+                            <span>Product Filter</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-400 text-sm">
+                            <i class="fas fa-check text-emerald text-xs"></i>
+                            <span>Local Storage</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Preview -->
+                <div class="relative">
+                    <div class="bg-surface border border-white/10 rounded-xl p-4 shadow-xl">
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-emerald rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-shopping-bag text-white text-sm"></i>
+                                </div>
+                                <span class="font-semibold text-sm">ShopDemo</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-search text-gray-400 text-sm"></i>
+                                <div class="relative">
+                                    <i class="fas fa-shopping-cart text-gray-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-white/5 rounded-lg p-2">
+                                <div class="h-14 bg-emerald/15 rounded-md mb-2 flex items-center justify-center">
+                                    <i class="fas fa-laptop text-xl text-emerald"></i>
+                                </div>
+                                <p class="text-xs font-medium">Laptop</p>
+                                <p class="text-emerald text-sm font-semibold">$999</p>
+                            </div>
+                            <div class="bg-white/5 rounded-lg p-2">
+                                <div class="h-14 bg-blue-500/15 rounded-md mb-2 flex items-center justify-center">
+                                    <i class="fas fa-headphones text-xl text-blue-500"></i>
+                                </div>
+                                <p class="text-xs font-medium">Headphones</p>
+                                <p class="text-emerald text-sm font-semibold">$299</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why I Built This -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-2xl">
+                <h2 class="text-2xl font-bold mb-4">Why E-Commerce?</h2>
+                <p class="text-gray-400 leading-relaxed">
+                    I chose to build an e-commerce store because it's the perfect project to learn JavaScript fundamentals. Working with arrays, objects, local storage, and DOM manipulation felt challenging at first, but seeing the cart work made it all worth it. This project gave me confidence to build more complex applications.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-16 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p class="text-emerald font-medium mb-2 text-sm">What's Inside</p>
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">Features I <span class="gradient-text">Built</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Shopping Cart</h3>
+                    <p class="text-gray-400 text-sm">Full cart functionality - add items, update quantities, remove products, and see totals update in real-time.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Product Filtering</h3>
+                    <p class="text-gray-400 text-sm">Filter products by category, sort by price, and search for specific items.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Local Storage</h3>
+                    <p class="text-gray-400 text-sm">Cart items persist even after refreshing the page - learned how to use localStorage.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Search</h3>
+                    <p class="text-gray-400 text-sm">Real-time search that filters products as you type.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Wishlist</h3>
+                    <p class="text-gray-400 text-sm">Save favorite products for later with the wishlist feature.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-mobile"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Mobile Ready</h3>
+                    <p class="text-gray-400 text-sm">Works perfectly on mobile devices with touch-friendly interface.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="py-16 bg-dark">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold mb-3">Demo Products</h2>
+                <p class="text-gray-400 text-sm">Here's a preview of what's in the store</p>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="categoryFilters">
+                <button class="filter-btn active px-4 py-1.5 bg-emerald text-white rounded-full text-sm font-medium" data-category="all">All</button>
+                <button class="filter-btn px-4 py-1.5 bg-surface border border-white/10 rounded-full text-gray-400 text-sm hover:border-emerald transition-colors" data-category="electronics">Electronics</button>
+                <button class="filter-btn px-4 py-1.5 bg-surface border border-white/10 rounded-full text-gray-400 text-sm hover:border-emerald transition-colors" data-category="accessories">Accessories</button>
+            </div>
+            
+            <!-- Search -->
+            <div class="max-w-md mx-auto mb-8">
+                <div class="relative">
+                    <input type="text" id="searchInput" placeholder="Search products..." class="w-full bg-surface border border-white/10 rounded-full px-5 py-2.5 pl-12 text-white placeholder-gray-500 focus:outline-none focus:border-emerald">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                </div>
+            </div>
+            
+            <!-- Product Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4" id="productGrid">
+                <!-- Products will be rendered by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-80 bg-surface border-l border-white/10 transform translate-x-full transition-transform duration-300 z-50">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-4 border-b border-white/10">
+                <h3 class="text-lg font-semibold"><i class="fas fa-shopping-cart mr-2"></i>Your Cart</h3>
+                <button id="closeCart" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cartItems" class="flex-1 overflow-y-auto p-4">
+                <!-- Cart items will be rendered here -->
+                <p class="text-gray-500 text-center py-8">Your cart is empty</p>
+            </div>
+            
+            <div class="p-4 border-t border-white/10">
+                <div class="flex justify-between mb-4">
+                    <span class="text-gray-400">Total:</span>
+                    <span id="cartTotal" class="text-emerald font-bold text-xl">$0</span>
+                </div>
+                <button class="btn-primary w-full justify-center">
+                    <i class="fas fa-credit-card"></i> Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Toggle Button -->
+    <button id="cartToggle" class="fixed bottom-6 right-6 w-14 h-14 bg-emerald rounded-full shadow-lg flex items-center justify-center text-white z-40 hover:bg-emerald/90 transition-colors">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cartBadge" class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full text-xs flex items-center justify-center">0</span>
+    </button>
+
+    <!-- Stats -->
+    <section class="py-12 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-emerald">96</p>
+                    <p class="text-gray-500 text-sm mt-1">Lighthouse Score</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-emerald">10+</p>
+                    <p class="text-gray-500 text-sm mt-1">Products</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-emerald">4</p>
+                    <p class="text-gray-500 text-sm mt-1">Categories</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-emerald">100%</p>
+                    <p class="text-gray-500 text-sm mt-1">Responsive</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-2xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">Need an online store?</h2>
+            <p class="text-gray-400 mb-6">
+                I can build a custom e-commerce store for your business. Let's discuss what you need.
+            </p>
+            <a href="../index.html#contact" class="btn-primary">
+                <i class="fas fa-rocket"></i> Start a Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-charcoal border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2026 NeerajBuilds. 
+                <a href="../index.html" class="text-emerald hover:underline">Back to Home</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- E-commerce JavaScript -->
+    <script src="ecommerce.js"></script>
+</body>
+</html>

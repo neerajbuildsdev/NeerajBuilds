@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Landing Page Project - My first project to learn HTML, CSS, and responsive design">
+    <title>Landing Page Project | NeerajBuilds</title>
+    
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066FF',
+                        'primary-light': '#3385FF',
+                        accent: '#00D4FF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --charcoal: #0D0D0D;
+            --dark: #141414;
+            --surface: #1A1A1A;
+            --primary: #0066FF;
+            --accent: #00D4FF;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--charcoal);
+            color: white;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0D0D0D 0%, #1a1a2e 50%, #0D0D0D 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.35);
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .code-block {
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+        }
+        
+        .code-keyword { color: #c792ea; }
+        .code-string { color: #c3e88d; }
+        .code-tag { color: #f07178; }
+        .code-attr { color: #ffcb6b; }
+        .code-comment { color: #5c6370; }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Back Link -->
+    <a href="index.html#portfolio" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen pt-24 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-10 -right-10 w-60 h-60 bg-primary/15 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 -left-10 w-60 h-60 bg-accent/15 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-surface/50 border border-white/8 rounded-full px-3 py-1.5 mb-5">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-sm text-gray-400">Personal Project</span>
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+                        My First<br>
+                        <span class="gradient-text">Landing Page</span>
+                    </h1>
+                    
+                    <p class="text-gray-400 text-base md:text-lg mb-6 max-w-lg leading-relaxed">
+                        This is the project that started it all. I built this to learn how to create responsive, conversion-focused landing pages from scratch. No frameworks - just pure HTML, CSS, and JavaScript.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="#features" class="btn-primary text-sm">
+                            <i class="fas fa-star"></i> What I Learned
+                        </a>
+                        <a href="#code" class="px-5 py-2.5 border border-white/15 rounded-lg text-white text-sm hover:bg-white/5 transition-colors">
+                            <i class="fas fa-code mr-2"></i> Code
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 pt-5 border-t border-white/10">
+                        <div class="flex items-center gap-2 text-gray-400 text-sm">
+                            <i class="fas fa-check text-primary text-xs"></i>
+                            <span>Responsive</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-400 text-sm">
+                            <i class="fas fa-check text-primary text-xs"></i>
+                            <span>Fast</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-400 text-sm">
+                            <i class="fas fa-check text-primary text-xs"></i>
+                            <span>Clean Code</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Preview -->
+                <div class="relative">
+                    <div class="bg-surface border border-white/10 rounded-xl p-4 shadow-xl">
+                        <div class="bg-dark rounded-lg px-3 py-2 flex items-center gap-2 mb-3">
+                            <div class="flex gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="h-6 bg-primary/20 rounded w-2/3"></div>
+                            <div class="h-3 bg-white/8 rounded w-full"></div>
+                            <div class="h-3 bg-white/8 rounded w-5/6"></div>
+                            <div class="flex gap-2 mt-4">
+                                <div class="h-8 bg-primary rounded-md w-24"></div>
+                                <div class="h-8 border border-white/15 rounded-md w-24"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why I Built This -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-2xl">
+                <h2 class="text-2xl font-bold mb-4">Why I Built This</h2>
+                <p class="text-gray-400 leading-relaxed">
+                    I wanted to understand how professional landing pages work. Most tutorials were either too basic or used drag-and-drop builders. So I decided to build one from scratch to really understand the fundamentals - how layouts work, how to make things responsive on different screen sizes, and how small details can improve user experience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Learned -->
+    <section id="features" class="py-16 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p class="text-primary font-medium mb-2 text-sm">Skills Gained</p>
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">What I <span class="gradient-text">Learned</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stat-card card-hover">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Responsive Design</h3>
+                    <p class="text-gray-400 text-sm">Learned media queries and how to make layouts work on mobile, tablet, and desktop.</p>
+                </div>
+                
+                <div class="stat-card card-hover">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Performance</h3>
+                    <p class="text-gray-400 text-sm">Discovered how to keep pages fast - minimizing code, optimizing images, and lazy loading.</p>
+                </div>
+                
+                <div class="stat-card card-hover">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">CSS Layouts</h3>
+                    <p class="text-gray-400 text-sm">Mastered Flexbox and CSS Grid to create complex layouts without struggle.</p>
+                </div>
+                
+                <div class="stat-card card-hover">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Clean Code</h3>
+                    <p class="text-gray-400 text-sm">Started learning the importance of organized, readable code with comments.</p>
+                </div>
+                
+                <div class="stat-card card-hover">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-universal-access"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Accessibility</h3>
+                    <p class="text-gray-400 text-sm">Learned about ARIA labels, keyboard navigation, and making sites usable for everyone.</p>
+                </div>
+                
+                <div class="stat-card card-hover">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">SEO Basics</h3>
+                    <p class="text-gray-400 text-sm">Understood meta tags, semantic HTML, and how search engines read websites.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-12 bg-dark">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-primary">95+</p>
+                    <p class="text-gray-500 text-sm mt-1">Lighthouse Score</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-primary">100%</p>
+                    <p class="text-gray-500 text-sm mt-1">Responsive</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-primary"><1s</p>
+                    <p class="text-gray-500 text-sm mt-1">Load Time</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-primary">0</p>
+                    <p class="text-gray-500 text-sm mt-1">Dependencies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Section -->
+    <section id="code" class="py-16 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <p class="text-primary font-medium mb-2 text-sm">Under the Hood</p>
+                <h2 class="text-2xl md:text-3xl font-bold">Simple <span class="gradient-text">Code</span></h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <i class="fab fa-html5 text-orange-500"></i>
+                        HTML
+                    </h3>
+                    <div class="code-block">
+                        <pre><code><span class="code-tag"><header</span> <span class="code-attr">class</span>=<span class="code-string">"hero"</span><span class="code-tag">></span>
+  <span class="code-tag"><nav></span>
+    <span class="code-tag"><div</span> <span class="code-attr">class</span>=<span class="code-string">"logo"</span><span class="code-tag">></span>Brand<span class="code-tag"></div></span>
+    <span class="code-tag"><ul</span> <span class="code-attr">class</span>=<span class="code-string">"nav-links"</span><span class="code-tag">></span>
+      <span class="code-tag"><li><a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">></span>Home<span class="code-tag"></a></li></span>
+      <span class="code-tag"><li><a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">></span>Features<span class="code-tag"></a></li></span>
+    <span class="code-tag"></ul></span>
+  <span class="code-tag"></nav></span>
+<span class="code-tag"></header></span></code></pre>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <i class="fab fa-css3 text-blue-500"></i>
+                        CSS
+                    </h3>
+                    <div class="code-block">
+                        <pre><code><span class="code-keyword">.hero</span> {
+  <span class="code-attr">min-height</span>: <span class="code-string">100vh</span>;
+  <span class="code-attr">display</span>: <span class="code-string">flex</span>;
+  <span class="code-attr">align-items</span>: <span class="code-string">center</span>;
+}
+
+<span class="code-keyword">.nav-links</span> {
+  <span class="code-attr">display</span>: <span class="code-string">flex</span>;
+  <span class="code-attr">gap</span>: <span class="code-string">2rem</span>;
+}
+
+<span class="code-comment">/* Mobile first */</span>
+<span class="code-keyword">@media</span> (max-width: 768px) {
+  <span class="code-keyword">.nav-links</span> {
+    <span class="code-attr">display</span>: <span class="code-string">none</span>;
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-surface border border-white/8 rounded-xl p-5">
+                <h4 class="font-semibold mb-3">Tech Stack</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 bg-white/5 rounded-md text-sm text-gray-300">HTML5</span>
+                    <span class="px-3 py-1.5 bg-white/5 rounded-md text-sm text-gray-300">CSS3</span>
+                    <span class="px-3 py-1.5 bg-white/5 rounded-md text-sm text-gray-300">JavaScript</span>
+                    <span class="px-3 py-1.5 bg-white/5 rounded-md text-sm text-gray-300">Font Awesome</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-2xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">Need a landing page?</h2>
+            <p class="text-gray-400 mb-6">
+                I'm actively taking on projects and would love to help you build something amazing. Let's create a landing page that actually converts.
+            </p>
+            <a href="index.html#contact" class="btn-primary">
+                <i class="fas fa-rocket"></i> Start a Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-charcoal border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2026 NeerajBuilds. 
+                <a href="index.html" class="text-primary hover:underline">Back to Home</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
+

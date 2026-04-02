@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Corporate Website Project - Learning professional web design">
+    <title>Corporate Website | NeerajBuilds</title>
+    
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066FF',
+                        'primary-light': '#3385FF',
+                        accent: '#00D4FF',
+                        orange: '#F97316',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --charcoal: #0D0D0D;
+            --dark: #141414;
+            --surface: #1A1A1A;
+            --primary: #0066FF;
+            --accent: #00D4FF;
+            --orange: #F97316;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--charcoal);
+            color: white;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #F97316, #FF6B35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0D0D0D 0%, #1a1510 50%, #0D0D0D 100%);
+        }
+        
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-link:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange), #FF6B35);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.35);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--orange);
+            color: white;
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--orange), #FF6B35);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .service-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--orange);
+        }
+        
+        .team-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--orange);
+        }
+        
+        .team-image {
+            height: 200px;
+            background: linear-gradient(135deg, #F97316/15, #FF6B35/10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Back Link -->
+    <a href="index.html#portfolio" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen pt-24 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-10 -right-10 w-60 h-60 bg-orange/15 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 -left-10 w-60 h-60 bg-accent/15 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-surface/50 border border-white/8 rounded-full px-3 py-1.5 mb-5">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-sm text-gray-400">Personal Project</span>
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+                        Professional<br>
+                        <span class="gradient-text">Corporate Website</span>
+                    </h1>
+                    
+                    <p class="text-gray-400 text-base md:text-lg mb-6 max-w-lg leading-relaxed">
+                        After building a few smaller projects, I wanted to try creating a professional business website. This project taught me how to structure larger sites, create cohesive designs, and organize content for different types of businesses.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="#services" class="btn-primary text-sm">
+                            <i class="fas fa-star"></i> Services
+                        </a>
+                        <a href="#team" class="btn-outline text-sm">
+                            <i class="fas fa-users mr-2"></i> Team
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 pt-5 border-t border-white/10">
+                        <div class="flex items-center gap-2 text-gray-400 text-sm">
+                            <i class="fas fa-check text-orange text-xs"></i>
+                            <span>Professional</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-400 text-sm">
+                            <i class="fas fa-check text-orange text-xs"></i>
+                            <span>SEO Ready</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-400 text-sm">
+                            <i class="fas fa-check text-orange text-xs"></i>
+                            <span>Fast</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Preview -->
+                <div class="relative">
+                    <div class="bg-surface border border-white/10 rounded-xl p-4 shadow-xl">
+                        <div class="flex items-center gap-3 mb-4 pb-3 border-b border-white/10">
+                            <div class="w-10 h-10 bg-orange rounded-lg flex items-center justify-center">
+                                <i class="fas fa-building text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm">CorpVision Inc.</h3>
+                                <p class="text-gray-400 text-xs">Building Tomorrow</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <span class="text-orange font-medium text-sm">Home</span>
+                            <span class="text-gray-400 text-sm ml-3">About</span>
+                            <span class="text-gray-400 text-sm ml-3">Services</span>
+                            <span class="text-gray-400 text-sm ml-3">Contact</span>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <h2 class="text-lg font-bold">Business Solutions</h2>
+                            <p class="text-gray-400 text-xs">Innovative solutions for modern businesses.</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 pt-3">
+                                <div class="bg-orange/10 rounded-lg p-2 text-center">
+                                    <p class="text-orange font-bold text-sm">500+</p>
+                                    <p class="text-gray-500 text-xs">Clients</p>
+                                </div>
+                                <div class="bg-orange/10 rounded-lg p-2 text-center">
+                                    <p class="text-orange font-bold text-sm">10+</p>
+                                    <p class="text-gray-500 text-xs">Years</p>
+                                </div>
+                                <div class="bg-orange/10 rounded-lg p-2 text-center">
+                                    <p class="text-orange font-bold text-sm">98%</p>
+                                    <p class="text-gray-500 text-xs">Happy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why I Built This -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-2xl">
+                <h2 class="text-2xl font-bold mb-4">Why Corporate Design?</h2>
+                <p class="text-gray-400 leading-relaxed">
+                    Most of my projects so far were simple one-page sites. I wanted to challenge myself with a multi-section business website. This helped me understand how to maintain consistent styling across pages, create effective navigation, and present information in a professional manner that businesses need.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-16 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p class="text-orange font-medium mb-2 text-sm">What I Built</p>
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">Service <span class="gradient-text">Sections</span></h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto">I created these service cards to practice creating professional layouts that businesses use</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="service-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Web Development</h3>
+                    <p class="text-gray-400 text-sm">Custom websites built with modern technologies.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Digital Marketing</h3>
+                    <p class="text-gray-400 text-sm">Strategic marketing to grow your online presence.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Business Consulting</h3>
+                    <p class="text-gray-400 text-sm">Expert advice to optimize your business operations.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Cloud Solutions</h3>
+                    <p class="text-gray-400 text-sm">Scalable cloud infrastructure and migration.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Cybersecurity</h3>
+                    <p class="text-gray-400 text-sm">Comprehensive security to protect your data.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Training</h3>
+                    <p class="text-gray-400 text-sm">Professional training programs for teams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-12 bg-dark">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-orange">500+</p>
+                    <p class="text-gray-500 text-sm mt-1">Clients</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-orange">1000+</p>
+                    <p class="text-gray-500 text-sm mt-1">Projects</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-orange">50+</p>
+                    <p class="text-gray-500 text-sm mt-1">Team</p>
+                </div>
+                <div class="stat-card">
+                    <p class="text-2xl font-bold text-orange">15+</p>
+                    <p class="text-gray-500 text-sm mt-1">Years</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="py-16 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <p class="text-orange font-medium mb-2 text-sm">Team Section</p>
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">Meet The <span class="gradient-text">Team</span></h2>
+                <p class="text-gray-400 text-sm">A team section I designed to practice card layouts</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user text-5xl text-orange/30"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold">John Smith</h3>
+                        <p class="text-orange text-sm mb-2">CEO & Founder</p>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-gray-500 hover:text-orange transition-colors"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-orange transition-colors"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user text-5xl text-orange/30"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold">Sarah Johnson</h3>
+                        <p class="text-orange text-sm mb-2">CTO</p>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-gray-500 hover:text-orange transition-colors"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-orange transition-colors"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user text-5xl text-orange/30"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold">Michael Chen</h3>
+                        <p class="text-orange text-sm mb-2">Head of Design</p>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-gray-500 hover:text-orange transition-colors"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-orange transition-colors"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user text-5xl text-orange/30"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold">Emily Davis</h3>
+                        <p class="text-orange text-sm mb-2">Marketing</p>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-gray-500 hover:text-orange transition-colors"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-orange transition-colors"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-2xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">Need a professional website?</h2>
+            <p class="text-gray-400 mb-6">
+                I can create a professional corporate website that represents your business well. Let's talk about your needs.
+            </p>
+            <a href="index.html#contact" class="btn-primary">
+                <i class="fas fa-rocket"></i> Start a Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-charcoal border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2026 NeerajBuilds. 
+                <a href="index.html" class="text-orange hover:underline">Back to Home</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
+

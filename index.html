@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NeerajBuilds - Aspiring Web Developer & Designer. I build modern, responsive websites and am eager to take on new projects while growing my skills.">
+    <title>NeerajBuilds | Aspiring Web Developer & Designer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#0D0D0D',
+                        dark: '#141414',
+                        surface: '#1A1A1A',
+                        primary: '#0066FF',
+                        'primary-light': '#3385FF',
+                        'primary-dark': '#0052CC',
+                        accent: '#00D4FF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight group">
+                <span class="text-white group-hover:text-primary transition-colors">Neeraj</span><span class="text-primary">Builds</span>
+            </a>
+            
+<!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#process" class="nav-link">Process</a>
+                <a href="#about" class="nav-link">About</a>
+                
+                <!-- Currency Toggle -->
+                <div class="flex items-center gap-2 bg-surface/50 border border-white/10 rounded-full px-3 py-1.5">
+                    <button id="currencyINR" class="currency-btn active text-sm font-medium" onclick="setCurrency('INR')">₹INR</button>
+                    <span class="text-white/30">|</span>
+                    <button id="currencyUSD" class="currency-btn text-sm font-medium text-gray-400" onclick="setCurrency('USD')">$USD</button>
+                </div>
+                
+                <a href="#contact" class="btn btn-primary">
+                    Start a Project
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-white text-xl p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-surface border-t border-white/5">
+            <div class="px-6 py-4 flex flex-col gap-4">
+                <a href="#services" class="mobile-nav-link">Services</a>
+                <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+                <a href="#process" class="mobile-nav-link">Process</a>
+                <a href="#about" class="mobile-nav-link">About</a>
+                <a href="#contact" class="btn btn-primary text-center mt-2">
+                    Start a Project
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-gradient-to-br from-charcoal via-dark to-charcoal"></div>
+        <div class="absolute top-1/4 -right-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 -left-32 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+        
+        <!-- Grid Pattern -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <!-- Trust Badge with Toggle -->
+                    <div class="inline-flex items-center gap-2 bg-surface/50 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 mb-6 animate-fade-in">
+                        <span id="availabilityDot" class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        <span id="availabilityText" class="text-sm text-gray-300">Available for new projects</span>
+                        <button id="availabilityToggle" class="ml-2 text-gray-500 hover:text-primary transition-colors" title="Toggle availability (owner only)">
+                            <i class="fas fa-toggle-on"></i>
+                        </button>
+                    </div>
+                    
+                    <p class="text-primary font-semibold mb-4 tracking-wide uppercase text-sm">Aspiring Web Developer</p>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        I Build Websites<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">That Look Great</span><br>
+                        & Perform Well.
+                    </h1>
+                <p class="text-gray-400 text-lg md:text-xl max-w-xl mb-8 leading-relaxed">
+                        I'm a 16-year-old building websites while learning web development. Every project I take on is a chance to create something great for you while growing my skills. No fancy agency talk here - just honest work and real results.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-rocket mr-2"></i> Start a Project
+                        </a>
+                        <a href="#portfolio" class="btn btn-secondary">
+                            <i class="fas fa-eye mr-2"></i> View Portfolio
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="flex flex-wrap gap-8 md:gap-12 pt-8 border-t border-white/10">
+                        <div class="stat-item">
+                            <p class="text-3xl md:text-4xl font-bold text-white">5+</p>
+                            <p class="text-gray-500 text-sm">Personal Projects</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="text-3xl md:text-4xl font-bold text-white">95+</p>
+                            <p class="text-gray-500 text-sm">Lighthouse Score</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="text-3xl md:text-4xl font-bold text-white">100%</p>
+                            <p class="text-gray-500 text-sm">Commitment</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Visual -->
+                <div class="order-1 lg:order-2 relative">
+                    <div class="relative">
+                        <!-- Main Card -->
+                        <div class="bg-surface border border-white/10 rounded-2xl p-8 shadow-2xl animate-float">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-code text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white">Website Development</h3>
+                                    <p class="text-gray-500 text-sm">Landing pages, business sites & more</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-400 text-sm">Performance</span>
+                                    <span class="text-primary font-semibold">99/100</span>
+                                </div>
+                                <div class="w-full bg-dark rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-primary to-accent h-2 rounded-full" style="width: 99%"></div>
+                                </div>
+                                <div class="flex justify-between items-center mt-4">
+                                    <span class="text-gray-400 text-sm">Design Score</span>
+                                    <span class="text-accent font-semibold">98/100</span>
+                                </div>
+                                <div class="w-full bg-dark rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-accent to-primary h-2 rounded-full" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-6">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Java</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-4 -right-4 bg-surface border border-white/10 rounded-xl p-4 shadow-xl animate-pulse-slow">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                                <div>
+                                    <p class="text-white font-semibold text-sm">Project Delivered</p>
+                                    <p class="text-gray-500 text-xs">On time, every time</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-4 -left-4 bg-surface border border-white/10 rounded-xl p-4 shadow-xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-bolt text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-semibold text-sm">Lightning Fast</p>
+                                    <p class="text-gray-500 text-xs">Sub-1s load time</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-primary font-semibold mb-4 tracking-wide uppercase text-sm">What I Do</p>
+                <h2 class="section-title">Services That Drive <span class="text-primary">Results</span></h2>
+                <p class="section-subtitle mx-auto">Tailored solutions for businesses that demand excellence. Every project is crafted with precision and optimized for conversions.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye text-2xl"></i>
+                    </div>
+                <h3 class="service-title">Landing Pages</h3>
+                    <p class="service-desc">Clean, fast landing pages that actually convert visitors into customers. No bloat, just results.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Clean design</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Mobile-friendly</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Fast loading</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Easy to update</li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fas fa-globe text-2xl"></i>
+                    </div>
+                <h3 class="service-title">Business Websites</h3>
+                    <p class="service-desc">Professional websites that represent your business well and work for you 24/7.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Custom look</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Contact forms</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> SSL security</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Mobile ready</li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                    </div>
+                <h3 class="service-title">E-Commerce Stores</h3>
+                    <p class="service-desc">Online stores that make selling products easy. Set up once, sell forever.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Product listings</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Shopping cart</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Checkout flow</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Mobile friendly</li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt text-2xl"></i>
+                    </div>
+                    <h3 class="service-title">Website Redesign</h3>
+                    <p class="service-desc">Transform your outdated website into a modern, high-converting digital asset.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Modern UI/UX</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Performance boost</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> SEO preservation</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Content migration</li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="service-title">Mobile Responsive</h3>
+                    <p class="service-desc">Websites that look amazing on every device. From desktop to mobile, your site will adapt perfectly to any screen size.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Mobile-first design</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> All screen sizes</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Fast loading</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Touch-friendly</li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="service-card group">
+                    <div class="service-icon">
+                        <i class="fas fa-tools text-2xl"></i>
+                    </div>
+                    <h3 class="service-title">Speed Optimization</h3>
+                    <p class="service-desc">Make your existing website lightning fast. Improve load times, Core Web Vitals, and user experience.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Code optimization</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Image compression</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Caching setup</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> CDN integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-primary font-semibold mb-4 tracking-wide uppercase text-sm">My Work</p>
+                <h2 class="section-title">Personal <span class="text-primary">Projects</span></h2>
+                <p class="section-subtitle mx-auto">A selection of projects I've built to learn, practice, and showcase my skills in web development and design.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Project Card 1 -->
+                <div class="project-card group">
+                    <div class="project-image">
+                        <div class="h-64 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center">
+                            <i class="fas fa-rocket text-6xl text-white/30 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="project-landing-page.html" class="btn btn-primary">View Live <i class="fas fa-external-link-alt ml-2"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <h3 class="project-title">Landing Page Project</h3>
+                        <p class="project-desc">A modern landing page built with HTML, CSS, and JavaScript. Focused on clean code, responsive design, and learning web development.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <span class="stat-label">Performance</span>
+                                <span class="stat-value">95+</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-label">Mobile</span>
+                                <span class="stat-value">100%</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-label">Responsive</span>
+                                <span class="stat-value">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 2 -->
+                <div class="project-card group">
+                    <div class="project-image">
+                        <div class="h-64 bg-gradient-to-br from-emerald-600/30 to-teal-500/20 flex items-center justify-center">
+                            <i class="fas fa-shopping-bag text-6xl text-white/30 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="ecommerce/index.html" class="btn btn-primary">View Live <i class="fas fa-external-link-alt ml-2"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <h3 class="project-title">E-Commerce Store</h3>
+                        <p class="project-desc">A fully functional e-commerce store built with HTML, CSS, and JavaScript. Features include shopping cart, product filtering, search, wishlist, and localStorage persistence.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <span class="stat-label">Performance</span>
+                                <span class="stat-value">96</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-label">Mobile</span>
+                                <span class="stat-value">100%</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-label">Responsive</span>
+                                <span class="stat-value">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 3 -->
+                <div class="project-card group">
+                    <div class="project-image">
+                        <div class="h-64 bg-gradient-to-br from-purple-600/30 to-pink-500/20 flex items-center justify-center">
+                            <i class="fas fa-bullhorn text-6xl text-white/30 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="project-marketing.html" class="btn btn-primary">View Live <i class="fas fa-external-link-alt ml-2"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <h3 class="project-title">Marketing Campaign Page</h3>
+                        <p class="project-desc">An interactive marketing page with animations and dynamic content. Built with HTML, CSS, and JavaScript to master front-end development and creative animations.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <span class="stat-label">Performance</span>
+                                <span class="stat-value">99</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-label">Mobile</span>
+                                <span class="stat-value">100%</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-label">Responsive</span>
+                                <span class="stat-value">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 4 -->
+                <div class="project-card group">
+                    <div class="project-image">
+                        <div class="h-64 bg-gradient-to-br from-orange-600/30 to-red-500/20 flex items-center justify-center">
+                            <i class="fas fa-building text-6xl text-white/30 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="project-corporate.html" class="btn btn-primary">View Live <i class="fas fa-external-link-alt ml-2"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <h3 class="project-title">Corporate Website</h3>
+                        <p class="project-desc">A professional business website built with HTML, CSS, and JavaScript. Learned responsive design, modern layouts, and best practices for professional websites.</p>
+                        <div class="project-stats">
+                            <div class="project-stat">
+                                <span class="stat-label">Performance</span>
+                                <span class="stat-value">95</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-label">Mobile</span>
+                                <span class="stat-value">100%</span>
+                            </div>
+                            <div class="project-stat">
+                                <span class="stat-label">Responsive</span>
+                                <span class="stat-value">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-plus mr-2"></i> Start Your Project
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-24 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-primary font-semibold mb-4 tracking-wide uppercase text-sm">How I Work</p>
+                <h2 class="section-title">My <span class="text-primary">Process</span></h2>
+                <p class="section-subtitle mx-auto">A structured approach to ensure every project delivers exceptional results, on time and on budget.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="process-step">
+                    <div class="process-number">01</div>
+                    <div class="process-icon">
+                        <i class="fas fa-search text-2xl"></i>
+                    </div>
+                <h3 class="process-title">Let's Talk</h3>
+                    <p class="process-desc">We discuss what you need - your goals, ideas, and timeline. I make sure I understand exactly what you want before we start.</p>
+                    <ul class="process-list">
+                        <li>Requirements gathering</li>
+                        <li>Target audience analysis</li>
+                        <li>Competitor research</li>
+                        <li>Project scope definition</li>
+                    </ul>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="process-step">
+                    <div class="process-number">02</div>
+                    <div class="process-icon">
+                        <i class="fas fa-pencil-alt text-2xl"></i>
+                    </div>
+                <h3 class="process-title">Design</h3>
+                    <p class="process-desc">I put together a design that matches your vision. You review it, tell me what to change, and we refine until you're happy.</p>
+                    <ul class="process-list">
+                        <li>Wireframe creation</li>
+                        <li>Visual design mockups</li>
+                        <li>Brand integration</li>
+                        <li>Revisions (up to 2 rounds)</li>
+                    </ul>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="process-step">
+                    <div class="process-number">03</div>
+                    <div class="process-icon">
+                        <i class="fas fa-code text-2xl"></i>
+                    </div>
+                <h3 class="process-title">Build</h3>
+                    <p class="process-desc">I code your website with clean, efficient code. You'll see progress along the way - no surprises, just steady work toward your finished site.</p>
+                    <ul class="process-list">
+                        <li>Responsive development</li>
+                        <li>Clean code practices</li>
+                        <li>Weekly progress updates</li>
+                        <li>Performance optimization</li>
+                    </ul>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="process-step">
+                    <div class="process-number">04</div>
+                    <div class="process-icon">
+                        <i class="fas fa-rocket text-2xl"></i>
+                    </div>
+                <h3 class="process-title">Launch</h3>
+                    <p class="process-desc">We test everything, fix any issues, then your site goes live. I'll help you get it online and show you how to make simple updates yourself.</p>
+                    <ul class="process-list">
+                        <li>Cross-browser testing</li>
+                        <li>Performance testing</li>
+                        <li>SEO setup</li>
+                        <li>Post-launch support</li>
+                    </ul>
+                </div>
+            </div>
+            
+<!-- Timeline -->
+            <div class="mt-16 bg-surface rounded-2xl p-8 border border-white/10">
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-calendar-alt text-primary text-2xl"></i>
+                        </div>
+                        <h4 class="text-white font-semibold mb-2">Typical Timeline</h4>
+                        <p class="text-gray-400">3-7 days for landing pages, 2-4 weeks for websites</p>
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-comments text-primary text-2xl"></i>
+                        </div>
+                        <h4 class="text-white font-semibold mb-2">Communication</h4>
+                        <p class="text-gray-400">Email & project management tools. Updates every 2-3 days</p>
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-hand-holding-usd text-primary text-2xl"></i>
+                        </div>
+                        <h4 class="text-white font-semibold mb-2">Payment Terms</h4>
+                        <p class="text-gray-400">50% upfront, 50% on completion<br><span class="currency-display">Secure PayPal/Stripe/UPI</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-charcoal">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-primary font-semibold mb-4 tracking-wide uppercase text-sm">Questions</p>
+                <h2 class="section-title">Frequently Asked <span class="text-primary">Questions</span></h2>
+                <p class="section-subtitle mx-auto">Everything you need to know before we start working together.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How long does it take to build a website?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Timeline depends on project complexity. A typical landing page takes 3-7 days, while a full business website takes 2-4 weeks. I'll provide a detailed timeline during our initial discussion.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What information do you need to get started?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>To start, I need: your project goals, target audience, brand guidelines (if any), content/copy for the pages, and any reference websites you like. I'll send you a detailed questionnaire after our initial call.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do we communicate during the project?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>I primarily use email for communication, which keeps everything documented. For urgent matters, we can schedule calls. I provide progress updates every 2-3 days via email or project management tools.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you offer revisions?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Each project includes 2 rounds of revisions during the design phase and minor revisions during development. Additional revision rounds can be arranged at an hourly rate.</p>
+                    </div>
+                </div>
+                
+<!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What are your payment terms?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>I require 50% upfront to begin work and 50% upon completion. I accept PayPal, Stripe, and bank transfers/UPI for Indian clients. For larger projects, we can arrange milestone-based payments.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you offer post-launch support?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! I provide 30 days of complimentary post-launch support to fix any bugs or issues. After that, I offer ongoing maintenance packages at competitive rates.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you accept international clients?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! I work with clients worldwide. Prices are shown in both INR (₹) for Indian clients and USD ($) for international clients. Payment can be made via PayPal, Stripe, or international bank transfer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-dark">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="bg-surface rounded-3xl p-8 border border-white/10">
+                        <div class="relative z-10">
+                            <div class="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mb-6">
+                                <i class="fas fa-user text-5xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Neeraj</h3>
+                            <p class="text-primary font-medium mb-4">Aspiring Web Developer & Designer</p>
+                            <p class="text-gray-400 mb-6">
+                                I started building websites because I love creating things that live on the internet. At 16, I'm putting in the work to get really good at this. Each project teaches me something new, and I give my best to every single client.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Java</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative elements -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
+                </div>
+                
+                <div>
+                    <p class="text-primary font-semibold mb-4 tracking-wide uppercase text-sm">About Me</p>
+                    <h2 class="section-title mb-6">Building Skills & <span class="text-primary">Experience</span></h2>
+                    <p class="text-gray-400 text-lg mb-6">
+                        I didn't just watch tutorials - I actually built things. These personal projects pushed me to learn real skills that actually work in the real world.
+                    </p>
+                    <p class="text-gray-400 mb-8">
+                        I'm not going to pretend I'm a veteran developer with 10 years of experience. But what I lack in years, I make up for in enthusiasm, dedication, and fresh ideas. Your project gets my full attention.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="stat-box">
+                            <p class="text-3xl font-bold text-white">5+</p>
+                            <p class="text-gray-500">Personal Projects</p>
+                        </div>
+                        <div class="stat-box">
+                            <p class="text-3xl font-bold text-white">100%</p>
+                            <p class="text-gray-500">Dedication</p>
+                        </div>
+                        <div class="stat-box">
+                            <p class="text-3xl font-bold text-white">1+</p>
+                            <p class="text-gray-500">Year Learning</p>
+                        </div>
+                        <div class="stat-box">
+                            <p class="text-3xl font-bold text-white"><24h</p>
+                            <p class="text-gray-500">Response Time</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope mr-2"></i> Let's Work Together
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-charcoal relative overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
+                <p class="text-primary font-semibold mb-4 tracking-wide uppercase text-sm">Get In Touch</p>
+                <h2 class="section-title">Let's Build Something <span class="text-primary">Amazing</span></h2>
+                <p class="section-subtitle mx-auto">Ready to start your project? Fill out the form below and I'll get back to you within 24 hours.</p>
+            </div>
+            
+            <div class="bg-surface rounded-2xl p-8 md:p-10 border border-white/10">
+<form action="https://formspree.io/f/mpqydzbe" method="POST" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Your Name *</label>
+                            <input type="text" id="name" name="name" required 
+                                class="form-input"
+                                placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                class="form-input"
+                                placeholder="john@company.com">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-300 mb-2">Company Name</label>
+                            <input type="text" id="company" name="company" 
+                                class="form-input"
+                                placeholder="Your company">
+                        </div>
+                        <div>
+                            <label for="website" class="block text-sm font-medium text-gray-300 mb-2">Current Website</label>
+                            <input type="url" id="website" name="website" 
+                                class="form-input"
+                                placeholder="https://">
+                        </div>
+                    </div>
+                    
+<div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Service Required *</label>
+                            <select id="service" name="service" required class="form-input">
+                                <option value="" class="bg-charcoal">Select a service</option>
+                                <option value="landing-page" class="bg-charcoal">Landing Page</option>
+                                <option value="business-website" class="bg-charcoal">Business Website</option>
+                                <option value="ecommerce" class="bg-charcoal">E-Commerce Store</option>
+                                <option value="redesign" class="bg-charcoal">Website Redesign</option>
+                                <option value="optimization" class="bg-charcoal">Speed Optimization</option>
+                                <option value="other" class="bg-charcoal">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="budget" class="block text-sm font-medium text-gray-300 mb-2">Budget Range *</label>
+                            <select id="budget" name="budget" required class="form-input">
+                                <option value="" class="bg-charcoal">Select budget</option>
+                                <option value="50000-60000" class="bg-charcoal budget-option" data-inr="₹50,000 - ₹60,000" data-usd="$600 - $700">₹50,000 - ₹60,000 ($600 - $700)</option>
+                                <option value="60000-80000" class="bg-charcoal budget-option" data-inr="₹60,000 - ₹80,000" data-usd="$700 - $1,000">₹60,000 - ₹80,000 ($700 - $1,000)</option>
+                                <option value="80000-120000" class="bg-charcoal budget-option" data-inr="₹80,000 - ₹1,20,000" data-usd="$1,000 - $1,500">₹80,000 - ₹1,20,000 ($1,000 - $1,500)</option>
+                                <option value="120000-160000" class="bg-charcoal budget-option" data-inr="₹1,20,000 - ₹1,60,000" data-usd="$1,500 - $2,000">₹1,20,000 - ₹1,60,000 ($1,500 - $2,000)</option>
+                                <option value="160000+" class="bg-charcoal budget-option" data-inr="₹1,60,000+" data-usd="$2,000+">₹1,60,000+ ($2,000+)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="timeline" class="block text-sm font-medium text-gray-300 mb-2">Expected Timeline</label>
+                        <select id="timeline" name="timeline" class="form-input">
+                            <option value="" class="bg-charcoal">Select timeline</option>
+                            <option value="asap" class="bg-charcoal">ASAP (Urgent)</option>
+                            <option value="2-weeks" class="bg-charcoal">Within 2 weeks</option>
+                            <option value="1-month" class="bg-charcoal">Within 1 month</option>
+                            <option value="flexible" class="bg-charcoal">Flexible</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Project Details *</label>
+                        <textarea id="message" name="message" rows="5" required
+                            class="form-input resize-none"
+                            placeholder="Tell me about your project, goals, and any specific requirements..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-full text-lg py-4">
+                        <i class="fas fa-paper-plane mr-2"></i> Send Message
+                    </button>
+                </form>
+                
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left">
+                        <div class="flex items-center gap-3 text-gray-400">
+<i class="fas fa-envelope text-primary"></i>
+                            <span>neerajbuilds.dev@gmail.com</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400">
+                            <i class="fas fa-clock text-primary"></i>
+                            <span>Response within 24 hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-dark border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <a href="#" class="text-xl font-bold tracking-tight inline-block mb-4">
+                        <span class="text-white">Neeraj</span><span class="text-primary">Builds</span>
+                    </a>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Young but serious about building great websites. I work hard, communicate well, and treat every project like it's my own. Let's build something you love.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/neerajbuildsdev" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://instagram.com/neerajbuilds.dev" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="footer-link">Services</a></li>
+                        <li><a href="#portfolio" class="footer-link">Portfolio</a></li>
+                        <li><a href="#process" class="footer-link">Process</a></li>
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#faq" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#contact" class="footer-link">Landing Pages</a></li>
+                        <li><a href="#contact" class="footer-link">Business Websites</a></li>
+                        <li><a href="#contact" class="footer-link">E-Commerce</a></li>
+                        <li><a href="#contact" class="footer-link">Website Redesign</a></li>
+                        <li><a href="#contact" class="footer-link">Speed Optimization</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-gray-500 text-sm">&copy; 2026 NeerajBuilds. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-500 text-sm hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 text-sm hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+

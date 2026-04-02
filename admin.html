@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - NeerajBuilds</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #0D0D0D;
+            color: white;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #0066FF;
+        }
+        
+        .card {
+            background: #1A1A1A;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .message-from {
+            font-weight: 600;
+            color: #0066FF;
+        }
+        
+        .message-time {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .message-detail {
+            margin-bottom: 0.5rem;
+        }
+        
+        .message-label {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .message-value {
+            color: white;
+        }
+        
+        .empty {
+            text-align: center;
+            padding: 3rem;
+            color: #6b7280;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #0066FF;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-danger {
+            background: #EF4444;
+        }
+        
+        .count {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-envelope"></i> Contact Messages</h1>
+        <p class="count" id="messageCount"></p>
+        
+        <div id="messages">
+            <div class="empty">No messages yet</div>
+        </div>
+        
+        <button class="btn btn-danger" onclick="clearMessages()">
+            <i class="fas fa-trash"></i> Clear All Messages
+        </button>
+        
+        <button class="btn" style="background: #10B981;" onclick="addTestMessage()">
+            <i class="fas fa-plus"></i> Add Test Message
+        </button>
+    </div>
+    
+    <script>
+        // Owner password for admin access
+        const OWNER_PASSWORD = 'scs390652';
+
+        // Check if user is authenticated
+        function isAuthenticated() {
+            return sessionStorage.getItem('adminAuthenticated') === 'true';
+        }
+
+        // Authenticate user
+        function authenticate(password) {
+            if (password === OWNER_PASSWORD) {
+                sessionStorage.setItem('adminAuthenticated', 'true');
+                return true;
+            }
+            return false;
+        }
+
+        // Show login form
+        function showLogin() {
+            document.body.innerHTML = `
+                <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #0D0D0D; color: white; font-family: 'Inter', system-ui, sans-serif;">
+                    <div style="background: #1A1A1A; padding: 2rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1); max-width: 400px; width: 100%; text-align: center;">
+                        <h1 style="color: #0066FF; margin-bottom: 1rem; font-size: 1.5rem;"><i class="fas fa-lock"></i> Admin Access</h1>
+                        <p style="color: #6b7280; margin-bottom: 1.5rem;">Enter your password to access the admin panel.</p>
+                        <input type="password" id="adminPassword" placeholder="Enter password" 
+                            style="width: 100%; padding: 0.75rem; background: #0D0D0D; border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; color: white; margin-bottom: 1rem; font-size: 1rem;">
+                        <button onclick="attemptLogin()" style="width: 100%; padding: 0.75rem; background: #0066FF; color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1rem; font-weight: 600;">Login</button>
+                        <p id="errorMsg" style="color: #EF4444; margin-top: 1rem; display: none;">Incorrect password. Try again.</p>
+                        <a href="index.html" style="display: inline-block; margin-top: 1.5rem; color: #6b7280; text-decoration: none; font-size: 0.875rem;">← Back to Home</a>
+                    </div>
+                </div>
+            `;
+            
+            // Allow Enter key to submit
+            document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') attemptLogin();
+            });
+        }
+
+        // Attempt login
+        function attemptLogin() {
+            const password = document.getElementById('adminPassword').value;
+            if (authenticate(password)) {
+                location.reload();
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+
+        // Check authentication on page load
+        if (!isAuthenticated()) {
+            showLogin();
+        }
+
+        // Debug function to test if localStorage is working
+        function testLocalStorage() {
+            try {
+                localStorage.setItem('test', 'test');
+                localStorage.removeItem('test');
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+        
+        // Add a test message for debugging
+        function addTestMessage() {
+            const testMessage = {
+                name: "Test User",
+                email: "test@example.com",
+                company: "Test Company",
+                service: "business-website",
+                budget: "1000-1500",
+                message: "This is a test message to verify the admin panel is working.",
+                timestamp: new Date().toISOString()
+            };
+            
+            const messages = JSON.parse(localStorage.getItem('portfolioMessages') || '[]');
+            messages.push(testMessage);
+            localStorage.setItem('portfolioMessages', JSON.stringify(messages));
+            
+            loadMessages();
+            alert('Test message added! Check if it appears above.');
+        }
+        
+function loadMessages() {
+            // Check if localStorage is available
+            if (!testLocalStorage()) {
+                document.getElementById('messages').innerHTML = 
+                    '<div class="empty">localStorage is not available. Please allow cookies and storage for this site.</div>';
+                return;
+            }
+            
+            const messages = JSON.parse(localStorage.getItem('portfolioMessages') || '[]');
+            const container = document.getElementById('messages');
+            const countEl = document.getElementById('messageCount');
+            
+            countEl.textContent = `${messages.length} message${messages.length !== 1 ? 's' : ''} received`;
+            
+            if (messages.length === 0) {
+                container.innerHTML = '<div class="empty">No messages yet. Submit the contact form on the main website to see messages here.</div>';
+                return;
+            }
+            
+            // Sort by newest first
+            messages.reverse();
+            
+            container.innerHTML = messages.map((msg, index) => `
+                <div class="card">
+                    <div class="message-header">
+                        <span class="message-from">${msg.name || 'Unknown'}</span>
+                        <span class="message-time">${new Date(msg.timestamp).toLocaleString()}</span>
+                    </div>
+                    <div class="message-detail">
+                        <span class="message-label">Email:</span>
+                        <span class="message-value">${msg.email || 'Not provided'}</span>
+                    </div>
+                    ${msg.company ? `
+                    <div class="message-detail">
+                        <span class="message-label">Company:</span>
+                        <span class="message-value">${msg.company}</span>
+                    </div>
+                    ` : ''}
+                    ${msg.website ? `
+                    <div class="message-detail">
+                        <span class="message-label">Website:</span>
+                        <span class="message-value">${msg.website}</span>
+                    </div>
+                    ` : ''}
+                    ${msg.service ? `
+                    <div class="message-detail">
+                        <span class="message-label">Service:</span>
+                        <span class="message-value">${msg.service}</span>
+                    </div>
+                    ` : ''}
+                    ${msg.budget ? `
+                    <div class="message-detail">
+                        <span class="message-label">Budget:</span>
+                        <span class="message-value">${msg.budget} ${msg.currency ? '(' + msg.currency + ')' : ''}</span>
+                    </div>
+                    ` : ''}
+                    ${msg.message ? `
+                    <div class="message-detail">
+                        <span class="message-label">Message:</span>
+                        <span class="message-value">${msg.message}</span>
+                    </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+        
+        function clearMessages() {
+            if (confirm('Are you sure you want to delete all messages?')) {
+                localStorage.removeItem('portfolioMessages');
+                loadMessages();
+            }
+        }
+        
+        // Load messages on page load
+        loadMessages();
+    </script>
+</body>
+</html>
+
