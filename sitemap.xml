@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://neerajbuilds.com/</loc>\n    <lastmod>2024-01-01</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>https://neerajbuilds.com/project-corporate.html</loc>\n    <lastmod>2024-01-01</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n  <url>\n    <loc>https://neerajbuilds.com/project-landing-page.html</loc>\n    <lastmod>2024-01-01</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n  <url>\n    <loc>https://neerajbuilds.com/project-marketing.html</loc>\n    <lastmod>2024-01-01</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n  <url>\n    <loc>https://neerajbuilds.com/ecommerce/</loc>\n    <lastmod>2024-01-01</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n</urlset>\n
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://neerajbuildsdev.github.io/NeerajBuilds/</loc>
+  </url>
+
+  <url>
+    <loc>https://neerajbuildsdev.github.io/NeerajBuilds/project-corporate.html</loc>
+  </url>
+
+  <url>
+    <loc>https://neerajbuildsdev.github.io/NeerajBuilds/project-landing-page.html</loc>
+  </url>
+
+  <url>
+    <loc>https://neerajbuildsdev.github.io/NeerajBuilds/project-marketing.html</loc>
+  </url>
+
+</urlset>
